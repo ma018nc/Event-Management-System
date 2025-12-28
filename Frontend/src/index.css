@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 20% 99%;
+    --foreground: 240 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 15% 15%;
+
+    /* Deep indigo primary for trust and elegance */
+    --primary: 250 70% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 250 85% 70%;
+
+    /* Coral secondary for energy */
+    --secondary: 340 75% 65%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted backgrounds */
+    --muted: 240 10% 96%;
+    --muted-foreground: 240 8% 45%;
+
+    /* Gold accent for premium feel */
+    --accent: 45 90% 60%;
+    --accent-foreground: 240 15% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 90%;
+    --input: 240 10% 90%;
+    --ring: 250 70% 55%;
+
+    --radius: 0.75rem;
+
+    /* Gradient definitions */
+    --gradient-hero: linear-gradient(135deg, hsl(250 70% 55%), hsl(340 75% 65%));
+    --gradient-card: linear-gradient(135deg, hsl(250 70% 55% / 0.05), hsl(340 75% 65% / 0.05));
+    --gradient-primary: linear-gradient(135deg, hsl(250 70% 55%), hsl(250 85% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(340 75% 65%), hsl(45 90% 60%));
+    
+    /* Glassmorphic effects */
+    --glass-bg: hsl(0 0% 100% / 0.7);
+    --glass-border: hsl(0 0% 100% / 0.3);
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 40px -10px hsl(250 70% 55% / 0.15);
+    --shadow-glow: 0 0 40px hsl(250 85% 70% / 0.3);
+    --shadow-card: 0 4px 20px hsl(240 15% 15% / 0.08);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 240 15% 8%;
+    --foreground: 240 5% 96%;
+
+    --card: 240 12% 12%;
+    --card-foreground: 240 5% 96%;
+
+    --popover: 240 12% 12%;
+    --popover-foreground: 240 5% 96%;
+
+    --primary: 250 70% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 250 85% 75%;
+
+    --secondary: 340 75% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 45 90% 55%;
+    --accent-foreground: 240 15% 10%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 20%;
+    --input: 240 10% 20%;
+    --ring: 250 70% 60%;
+
+    --glass-bg: hsl(240 12% 12% / 0.7);
+    --glass-border: hsl(240 12% 25% / 0.3);
+    
+    --shadow-elegant: 0 10px 40px -10px hsl(250 70% 60% / 0.25);
+    --shadow-glow: 0 0 40px hsl(250 85% 75% / 0.4);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-md border rounded-xl shadow-card;
+    background-color: var(--glass-bg);
+    border-color: var(--glass-border);
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+  
+  .btn-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground;
+    @apply hover:shadow-glow transition-all duration-300 hover:scale-105;
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-elegant;
+  }
+}
+
